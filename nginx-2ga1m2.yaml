@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-2ga1m2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-2ga1m2
+  namespace: my-nginx-2ga1m2
+  labels:
+    name: nginx-2ga1m2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-2ga1m2
+  template:
+    metadata:
+      namespace: my-nginx-2ga1m2
+      labels:
+        name: nginx-2ga1m2
+    spec:
+      containers:
+      - name: nginx-2ga1m2
+        image: nginx
+        ports:
+        - containerPort: 80
+
